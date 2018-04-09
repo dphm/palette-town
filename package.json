@@ -1,0 +1,13 @@
+{
+  "name": "palette-town",
+  "version": "1.0.0",
+  "private": "true",
+  "description": "Color palette generator",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quelledanielle/palette-town.git"
+  },
+  "author": "Danielle Pham <quelledanielle@users.noreply.github.com>",
+  "license": "ISC"
+}
