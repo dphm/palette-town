@@ -1,36 +1,26 @@
 import React from 'react';
 import Color from './Color.jsx';
 
-const ColorsContainerStyle = () => ({
-  width: '100%',
-  margin: '8px',
-  border: '8px double black',
-  borderRadius: '4px',
-  boxShadow: 'inset 0 2px black, 0 2px black',
-});
-
-const ColorListStyle = () => ({
-  listStyle: 'none',
-  margin: 0,
-  padding: 0,
-  width: '100%',
-  height: '100%',
-
-  flex: '75%',
-  display: 'flex',
-  flexDirection: 'column'
-});
+function rgb(color) {
+  return `rgb(${color.r}, ${color.g}, ${color.b})`;
+}
 
 const ColorList = ({ colors }) => {
   let colorListItems = colors.map((color, i) => Color({
     key: i,
-    rgba: color.rgba,
-    hex: color.hex
+    rgb: rgb(color)
   }));
 
   return (
-    <section id="ColorsContainer" style={ ColorsContainerStyle() }>
-      <ul id="Colors" style={ ColorListStyle() }>
+    <section className="ColorListContainer">
+      <ul
+        className="ColorList"
+        style={{
+          color: rgb(colors[3]),
+          WebkitTextStrokeWidth: "2px",
+          WebkitTextStrokeColor: rgb(colors[0])
+        }}
+      >
         { colorListItems }
       </ul>
     </section>

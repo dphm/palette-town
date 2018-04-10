@@ -1,30 +1,20 @@
 import React from 'react';
 import ControlPanel from './components/ControlPanel.jsx';
 import ColorList from './components/ColorList.jsx';
+import PalettesData from './palettes.json';
 
-const AppStyle = {
-  width: '100%',
-  height: '100%',
-
-  display: 'flex',
-  flexDirection: 'row',
-};
+const PaletteNames = Object.keys(PalettesData.palettes);
 
 const App = () => {
-  let controlPanel = ControlPanel();
-  let colorList = ColorList({ colors: [
-    { rgba: 'rgba(0, 0, 0, 1.0)', hex: '000000' },
-    { rgba: 'rgba(255, 255, 255, 1.0)', hex: 'FFFFFF' },
-  ]});
+  let controlPanel = ControlPanel({ paletteNames: PaletteNames });
+  let colorList = ColorList({ colors: PalettesData.palettes.brown });
+
+  console.log(PaletteNames)
 
   return (
-    <div
-      id="AppContainer"
-      role="presentation"
-      style={ AppStyle }
-    >
-      { controlPanel }
+    <div className="AppContainer" role="presentation">
       { colorList }
+      { controlPanel }
     </div>
   );
 };
