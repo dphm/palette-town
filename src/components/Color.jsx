@@ -1,8 +1,7 @@
 import React from 'react';
 
-const Color = ({ key, rgb }) => (
+const Color = ({ rgb }) => (
   <li
-    key={key}
     className="Color"
     style={{ backgroundColor: rgb }}
   >

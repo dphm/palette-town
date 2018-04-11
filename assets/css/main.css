@@ -93,7 +93,7 @@ select.PaletteList {
   overflow: hidden;
 }
 
-option.Palette {
+option.PaletteName {
   flex: 1 0 1em;
   padding: 3px;
 }

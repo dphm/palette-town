@@ -11,10 +11,9 @@ function textShadow(width, color) {
 }
 
 const ColorList = ({ colors }) => {
-  let colorListItems = colors.map((color, i) => Color({
-    key: i,
-    rgb: color
-  }));
+  let colorListItems = colors.map((color, i) => (
+    <Color key={ i } rgb={ color } />
+  ));
 
   return (
     <section className="ColorListContainer">
