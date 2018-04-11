@@ -1,14 +1,19 @@
 import React from 'react';
 import Color from './Color.jsx';
 
-function rgb(color) {
-  return `rgb(${color.r}, ${color.g}, ${color.b})`;
+function textShadow(width, color) {
+  return [
+    `-${width} -${width} 0 ${color}`,
+    ` ${width} -${width} 0 ${color}`,
+    `-${width}  ${width} 0 ${color}`,
+    ` ${width}  ${width} 0 ${color}`
+  ].join(', ');
 }
 
 const ColorList = ({ colors }) => {
   let colorListItems = colors.map((color, i) => Color({
     key: i,
-    rgb: rgb(color)
+    rgb: color
   }));
 
   return (
@@ -16,9 +21,8 @@ const ColorList = ({ colors }) => {
       <ul
         className="ColorList"
         style={{
-          color: rgb(colors[3]),
-          WebkitTextStrokeWidth: "2px",
-          WebkitTextStrokeColor: rgb(colors[0])
+          color: colors[0],
+          textShadow: textShadow('2px', colors[3])
         }}
       >
         { colorListItems }

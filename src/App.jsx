@@ -1,19 +1,34 @@
 import React from 'react';
 import ColorList from './components/ColorList.jsx';
 import PaletteList from './components/PaletteList.jsx';
-import PalettesData from './palettes.json';
+import PaletteData from './data/PaletteData';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { selectedPalette: props.selectedPalette };
+    this.onSelectPalette = this.onSelectPalette.bind(this);
+    this.state = { selectedPalette: PaletteData.names[0] };
+  }
+
+  onSelectPalette(event) {
+    let selectedPalette = event.currentTarget.value;
+    this.setState({ selectedPalette });
   }
 
   render() {
+    let selectedPalette = this.state.selectedPalette;
+    let colors = PaletteData.rgbColors(selectedPalette);
     return (
-      <div className="AppContainer" role="presentation">
-        <ColorList colors={ PalettesData.palettes[this.state.selectedPalette] } />
-        <PaletteList paletteNames={ Object.keys(PalettesData.palettes) } />
+      <div
+        className="AppContainer"
+        role="presentation"
+        style={{ backgroundColor: colors[3] }}
+      >
+        <ColorList colors={ colors } />
+        <PaletteList
+          selectedPalette={ selectedPalette }
+          onSelectPalette={ this.onSelectPalette }
+        />
       </div>
     );
   }
