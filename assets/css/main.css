@@ -5,6 +5,7 @@
 }
 
 html, body, input, ul {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -47,7 +48,7 @@ select::-ms-expand {
 }
 
 .ColorListContainer {
-  flex: 1 1 432px;
+  flex: 3 0 432px;
 }
 
 .ColorList {
@@ -60,29 +61,21 @@ select::-ms-expand {
 .Color {
   font-size: 1.5em;
 
-  flex: 1 50px;
+  flex: 1 0 50px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .PaletteListContainer {
-  flex: 0 0 144px;
+  flex: 1 0 96px;
   margin: 8px;
   padding: 8px;
-
-  line-height: 2em;
-}
-
-.PaletteList {
-  height: 140px;
-
-  display: flex;
-  flex-flow: column wrap;
 }
 
 select.PaletteList {
   width: 100%;
+  height: 100%;
 
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -92,8 +85,15 @@ select.PaletteList {
   box-shadow: none;
 
   font-family: 'PKMN RBYGSC', monospace;
+  font-size: 1em;
+
+  display: flex;
+  flex-flow: column wrap;
+
+  overflow: hidden;
 }
 
-.Palette {
-  flex: 0 0 20px;
+option.Palette {
+  flex: 1 0 1em;
+  padding: 3px;
 }

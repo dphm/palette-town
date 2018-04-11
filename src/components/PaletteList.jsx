@@ -22,16 +22,19 @@ const PaletteList = ({ selectedPalette, onSelectPalette }) => {
       { name }
     </option>
   ));
-  let borderColor = PaletteData.rgbColors(selectedPalette)[0];
+  let color = PaletteData.rgbColors(selectedPalette)[0];
   return (
     <section
       className="PaletteListContainer"
-      style={ doubleBorderStyle(borderColor) }
+      style={ doubleBorderStyle(color) }
     >
       <select
         className="PaletteList"
+        size="4"
         defaultValue={ selectedPalette }
         onChange={ onSelectPalette }
+        style={{ color: color }}
+        autoFocus
       >
         { names }
       </select>
