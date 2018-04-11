@@ -1,22 +1,22 @@
 import React from 'react';
-import ControlPanel from './components/ControlPanel.jsx';
 import ColorList from './components/ColorList.jsx';
+import PaletteList from './components/PaletteList.jsx';
 import PalettesData from './palettes.json';
 
-const PaletteNames = Object.keys(PalettesData.palettes);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { selectedPalette: props.selectedPalette };
+  }
 
-const App = () => {
-  let controlPanel = ControlPanel({ paletteNames: PaletteNames });
-  let colorList = ColorList({ colors: PalettesData.palettes.brown });
-
-  console.log(PaletteNames)
-
-  return (
-    <div className="AppContainer" role="presentation">
-      { colorList }
-      { controlPanel }
-    </div>
-  );
-};
+  render() {
+    return (
+      <div className="AppContainer" role="presentation">
+        <ColorList colors={ PalettesData.palettes[this.state.selectedPalette] } />
+        <PaletteList paletteNames={ Object.keys(PalettesData.palettes) } />
+      </div>
+    );
+  }
+}
 
 export default App;

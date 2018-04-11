@@ -16,58 +16,37 @@ html, body {
   font-family: "PKMN RBYGSC", monospace;
 }
 
-main {
-  width: 100%;
-  min-height: 100%;
-
-  background-color: rgb(4, 2, 4);
-}
-
-input {
-  margin-bottom: 8px;
-  border: 2px solid black;
-  box-shadow: none;
-}
-
 ul {
   list-style: none;
 }
 
-.AppContainer {
-  min-width: 180px;
-  max-width: 800px;
+#App {
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
+  min-height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AppContainer {
+  min-width: 160px;
+  min-height: 144px;
+  width: 640px;
+  height: 576px;
 
   display: flex;
   flex-direction: column;
-
-  background-color: #eee;
 }
 
 .ColorListContainer {
-  flex: 1 0 450px;
+  flex: 3 3 432px;
 }
 
-.ColorList {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.Color {
-  font-size: 2em;
-
-  flex: 1 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ControlPanel {
-  height: 150px;
-
-  margin: 8px;
+.PaletteListContainer {
+  flex: 1 1 144px;
+  /*margin: 8px;*/
   padding: 8px;
   border: 8px double black;
   border-radius: 4px;
@@ -78,14 +57,29 @@ ul {
   line-height: 2em;
 }
 
-.PaletteNames {
+.ColorList {
   height: 100%;
 
-  flex: 0 0 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Color {
+  font-size: 2em;
+
+  flex: 1 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.PaletteList {
+  height: 140px;
+
   display: flex;
   flex-flow: column wrap;
 }
 
-.PaletteName {
+.Palette {
   flex: 1 0 20px;
 }
