@@ -10,8 +10,8 @@
   },
   "license": "ISC",
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "start": "webpack-dev-server --open --config config/webpack.dev.js",
+    "build": "webpack --config config/webpack.prod.js"
   },
   "dependencies": {
     "npm": "^5.8.0",
