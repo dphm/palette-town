@@ -14,9 +14,12 @@
     "build": "webpack --config config/webpack.prod.js"
   },
   "dependencies": {
+    "mime": "^2.3.1",
     "npm": "^5.8.0",
     "react": "^16.3.1",
-    "react-dom": "^16.3.1"
+    "react-dom": "^16.3.1",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
