@@ -47,8 +47,13 @@ select::-ms-expand {
   flex-direction: column;
 }
 
-.ColorListContainer {
+.Display {
   flex: 3 0 432px;
+}
+
+.Display canvas {
+  width: 100%;
+  height: 100%;
 }
 
 .ColorList {

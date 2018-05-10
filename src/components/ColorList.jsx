@@ -16,17 +16,15 @@ const ColorList = ({ colors }) => {
   ));
 
   return (
-    <section className="ColorListContainer">
-      <ul
-        className="ColorList"
-        style={{
-          color: colors[0],
-          textShadow: textShadow('2px', colors[3])
-        }}
-      >
-        { colorListItems }
-      </ul>
-    </section>
+    <ul
+      className="ColorList"
+      style={{
+        color: colors[0],
+        textShadow: textShadow('2px', colors[3])
+      }}
+    >
+      { colorListItems }
+    </ul>
   );
 };
 
