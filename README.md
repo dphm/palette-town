@@ -2,7 +2,7 @@
 
 GameBoy Color palettes
 
-![Screenshot of Palette Town](assets/img/screenshot.png)
+![Webcam screen capture](assets/img/webcam.gif)
 
 ## References
 
