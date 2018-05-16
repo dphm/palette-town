@@ -2,36 +2,36 @@ import React from 'react';
 import PaletteName from './PaletteName.jsx';
 import PaletteData from '../data/PaletteData';
 
-function doubleBorderStyle(color) {
+function doubleBorderStyle(rgb) {
   return {
-    border: `8px double ${color}`,
+    border: `8px double ${rgb}`,
     borderRadius: '4px',
     boxShadow: [
-      `inset 0 2px ${color}`,
-      `0 2px ${color}`
+      `inset 0 2px ${rgb}`,
+      `0 2px ${rgb}`
     ].join(', ')
   };
 }
 
-const PaletteList = ({ selectedPalette, onSelectPalette }) => {
+const PaletteList = ({selectedPalette, onSelectPalette}) => {
   let names = PaletteData.names.map((name) => (
-    <PaletteName key={ name } name={ name } />
+    <PaletteName key={name} name={name} />
   ));
-  let color = PaletteData.rgbColors(selectedPalette)[0];
+  let rgb = PaletteData.colors(selectedPalette)[0].rgbString;
   return (
     <section
       className="PaletteListContainer"
-      style={ doubleBorderStyle(color) }
+      style={doubleBorderStyle(rgb)}
     >
       <select
         className="PaletteList"
         size="4"
-        value={ selectedPalette }
-        onChange={ onSelectPalette }
-        style={{ color: color }}
+        value={selectedPalette}
+        onChange={onSelectPalette}
+        style={{color: rgb}}
         autoFocus
       >
-        { names }
+        {names}
       </select>
     </section>
   );

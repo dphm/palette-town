@@ -3,27 +3,41 @@ import Display from './components/Display.jsx';
 import PaletteList from './components/PaletteList.jsx';
 import PaletteData from './data/PaletteData';
 
+const DISPLAY_WIDTH = 320;
+const DISPLAY_HEIGHT = 216;
+
 class App extends React.Component {
   componentDidMount() {
-    navigator.mediaDevices.getUserMedia({ video: { width: 320, height: 216 } })
+    let constraints = {
+      video: {
+        width: DISPLAY_WIDTH,
+        height: DISPLAY_HEIGHT
+      }
+    };
+
+    navigator.mediaDevices.getUserMedia(constraints)
       .then(this.props.onConnectStream)
       .catch((err) => console.error(err));
   }
 
   render() {
-    let selectedPalette = this.props.selectedPalette;
-    let colors = PaletteData.rgbColors(selectedPalette);
-
+    let colors = PaletteData.colors(this.props.selectedPalette);
+    let bgColor = colors[3];
     return(
       <div
         className="AppContainer"
         role="presentation"
-        style={{ backgroundColor: colors[3] }}
+        style={{backgroundColor: bgColor.rgbString}}
       >
-        <Display colors={ colors } video={this.props.stream} />
+        <Display
+          selectedPalette={this.props.selectedPalette}
+          video={this.props.stream}
+          width={DISPLAY_WIDTH}
+          height={DISPLAY_HEIGHT}
+        />
         <PaletteList
-          selectedPalette={ selectedPalette }
-          onSelectPalette={ this.props.onSelectPalette }
+          selectedPalette={this.props.selectedPalette}
+          onSelectPalette={this.props.onSelectPalette}
         />
       </div>
     );

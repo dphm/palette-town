@@ -4,7 +4,12 @@ import Canvas from './Canvas.jsx';
 class VideoFeed extends React.Component {
   constructor(props) {
     super(props);
+    this.width = props.width;
+    this.height = props.height;
+    this.numColors = props.colors.length;
+
     this.drawStream = this.drawStream.bind(this);
+    this.setPaletteBuffer = this.setPaletteBuffer.bind(this);
   }
 
   componentDidMount() {
@@ -19,32 +24,49 @@ class VideoFeed extends React.Component {
 
         this.video = document.createElement('video');
         this.video.srcObject = this.props.stream;
-        this.video.width = this.output.width;
-        this.video.height = this.output.height;
+        this.video.width = this.width;
+        this.video.height = this.height;
         this.video.play();
 
         this.input = document.createElement('canvas');
         this.inputCtx = this.input.getContext('2d', { alpha: false });
-        this.input.width = this.output.width;
-        this.input.height = this.output.height;
+        this.input.width = this.width;
+        this.input.height = this.height;
 
-        let byteSize = this.output.width * this.output.height * 4;
-        this.pointer = mod.exports.alloc(byteSize);
-        this.imageBytes = new Uint8ClampedArray(mod.exports.memory.buffer, this.pointer, byteSize);
-        this.img = new ImageData(this.imageBytes, this.output.width, this.output.height);
+        let paletteSize = this.numColors * 4;
+        let imageSize = this.width * this.height * 4;
+        let bufferSize = imageSize + paletteSize;
+
+        this.pointer = mod.exports.alloc(bufferSize);
+        this.paletteBuffer = new Uint8ClampedArray(mod.exports.memory.buffer, this.pointer, paletteSize);
+        this.imageBuffer = new Uint8ClampedArray(mod.exports.memory.buffer, this.pointer + paletteSize, imageSize);
+        this.image = new ImageData(this.imageBuffer, this.width, this.height);
         
+        this.setPaletteBuffer();
+
         requestAnimationFrame(this.drawStream);
       });
   }
 
+  componentDidUpdate() {
+    this.setPaletteBuffer();
+  }
+
   drawStream() {
     this.inputCtx.drawImage(this.video, 0, 0);
-    this.imageBytes.set(this.inputCtx.getImageData(0, 0, this.output.width, this.output.height).data);
+    this.imageBuffer.set(this.inputCtx.getImageData(0, 0, this.width, this.height).data);
 
-    this.mod.exports.transform_grayscale(this.pointer, this.output.width, this.output.height);
-    this.outputCtx.putImageData(this.img, 0, 0);
+    this.mod.exports.transform_grayscale(this.pointer, this.width, this.height, this.numColors);
+    this.outputCtx.putImageData(this.image, 0, 0);
 
     requestAnimationFrame(this.drawStream);
+  }
+
+  setPaletteBuffer() {
+    let paletteBytes = this.props.colors.reduce((bytes, color) => (
+      bytes.concat(color.values)
+    ), []);
+    this.paletteBuffer.set(paletteBytes);
   }
 
   render() {

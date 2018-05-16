@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Color = ({ rgb }) => (
+const Color = ({rgb}) => (
   <li
     className="Color"
-    style={{ backgroundColor: rgb }}
+    style={{backgroundColor: rgb}}
   >
-    { rgb }
+    {rgb}
   </li>
 );
 
