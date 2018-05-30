@@ -56,7 +56,7 @@ class VideoFeed extends React.Component {
     this.inputCtx.drawImage(this.video, 0, 0);
     this.imageBuffer.set(this.inputCtx.getImageData(0, 0, this.width, this.height).data);
 
-    this.mod.exports.transform_grayscale(this.pointer, this.width, this.height, this.numColors);
+    this.mod.exports.recolor_image_bytes(this.pointer, this.width, this.height, this.numColors);
     this.outputCtx.putImageData(this.image, 0, 0);
 
     requestAnimationFrame(this.drawStream);

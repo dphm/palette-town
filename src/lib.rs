@@ -15,7 +15,7 @@ pub extern "C" fn alloc(size: usize) -> *mut c_void {
 }
 
 #[no_mangle]
-pub extern "C" fn transform_grayscale(pointer: *mut u8, max_width: usize, max_height: usize, num_colors: usize) {
+pub extern "C" fn recolor_image_bytes(pointer: *mut u8, max_width: usize, max_height: usize, num_colors: usize) {
     let palette_size = num_colors * VALS_PER_PIXEL;
     let image_size = max_width * max_height * VALS_PER_PIXEL;
     let bytes = unsafe { slice::from_raw_parts_mut(pointer, palette_size + image_size) };
