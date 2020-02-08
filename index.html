@@ -2,11 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
   <title>Palette Town</title>
+  <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
 </head>
 <body>
-  <main id="App"></main>
-  <script src="./index.bundle.js"></script>
+  <div class="app-container">
+    <main id="app" data-controller="palette">
+      <div class="canvas-container">
+        <canvas data-target="palette.canvas"></canvas>
+      </div>
+      <div class="palette-list-container">
+        <select class="palette-list" data-target="palette.selector"></select>
+      </div>
+    </main>
+  </div>
+  <script src="./dist/main.js"></script>
 </body>
 </html>

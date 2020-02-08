@@ -2,7 +2,7 @@
 name = "palette-town"
 version = "0.1.0"
 publish = false
-authors = ["quelledanielle <quelledanielle@users.noreply.github.com>"]
+authors = ["D Pham <dphm@protonmail.com>"]
 
 [lib]
 crate-type = ["cdylib"]
