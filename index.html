@@ -7,12 +7,17 @@
 </head>
 <body>
   <div class="app-container">
-    <main id="app" data-controller="palette">
+    <main id="app"
+      data-controller="palette"
+      data-target="palette.screen"
+      data-palette-url="/data/palettes.json">
       <div class="canvas-container">
         <canvas data-target="palette.canvas"></canvas>
       </div>
       <div class="palette-list-container">
-        <select class="palette-list" data-target="palette.selector"></select>
+        <select class="palette-list"
+          data-target="palette.selector"
+          data-action="palette#update"></select>
       </div>
     </main>
   </div>
