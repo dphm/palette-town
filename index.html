@@ -9,15 +9,51 @@
   <div class="app-container">
     <main id="app"
       data-controller="palette"
-      data-target="palette.screen"
-      data-palette-url="/data/_palette_options.html">
+      data-target="palette.screen">
       <div class="canvas-container">
         <canvas data-target="palette.canvas"></canvas>
       </div>
       <div class="palette-list-container">
         <select class="palette-list"
           data-target="palette.selector"
-          data-action="palette#update"></select>
+          data-action="palette#update">
+          <option class="palette-name" value='{"colors": [{ "r":   4, "g":   2, "b":   4 },{ "r": 132, "g":  66, "b":   4 },{ "r": 236, "g": 154, "b":  84 },{ "r": 252, "g": 250, "b": 252 }]}'>
+            brown
+          </option>
+          <option class="palette-name" value='{"colors": [{ "r":   4, "g":   2, "b":   4 },{ "r": 156, "g": 146, "b": 244 },{ "r": 236, "g": 138, "b": 140 },{ "r": 252, "g": 250, "b": 172 }]}'>
+            pastelMix
+          </option>
+          <option class="palette-name" value='{"colors": [{ "r":   4, "g":   2, "b":   4 },{ "r":   4, "g":  50, "b": 252 },{ "r": 124, "g": 170, "b": 252 },{ "r": 252, "g": 250, "b": 252 }]}'>
+            blue
+          </option>
+          <option class="palette-name" value='{"colors": [{ "r":   4, "g":   2, "b":   4 },{ "r": 252, "g":  50, "b":   4 },{ "r":   4, "g": 250, "b":   4 },{ "r": 252, "g": 250, "b": 252 }]}'>
+            green
+          </option>
+          <option class="palette-name" value='{"colors": [{ "r":   4, "g":   2, "b":   4 },{ "r": 172, "g":  38, "b":  36 },{ "r": 236, "g": 138, "b": 140 },{ "r": 252, "g": 250, "b": 252 }]}'>
+            red
+          </option>
+          <option class="palette-name" value='{"colors": [{ "r":   4, "g":   2, "b":   4 },{ "r": 252, "g":  50, "b":   4 },{ "r": 244, "g": 254, "b":   4 },{ "r": 252, "g": 250, "b": 252 }]}'>
+            orange
+          </option>
+          <option class="palette-name" value='{"colors": [{ "r":   4, "g":   2, "b":   4 },{ "r":  68, "g":  50, "b": 164 },{ "r": 156, "g": 146, "b": 244 },{ "r": 252, "g": 250, "b": 252 }]}'>
+            darkBlue
+          </option>
+          <option class="palette-name" value='{"colors": [{ "r":   4, "g":   2, "b":   4 },{ "r":   4, "g":  50, "b": 252 },{ "r":   4, "g": 250, "b":   4 },{ "r": 252, "g": 250, "b": 252 }]}'>
+            darkGreen
+          </option>
+          <option class="palette-name" value='{"colors": [{ "r":  76, "g":  42, "b":   4 },{ "r": 148, "g": 122, "b":  76 },{ "r": 196, "g": 174, "b": 148 },{ "r": 252, "g": 234, "b": 228 }]}'>
+            darkBrown
+          </option>
+          <option class="palette-name" value='{"colors": [{ "r":   4, "g":   2, "b":   4 },{ "r": 132, "g":  66, "b":   4 },{ "r": 244, "g": 254, "b":   4 },{ "r": 252, "g": 250, "b": 252 }]}'>
+            yellow
+          </option>
+          <option class="palette-name" value='{"colors": [{ "r":   4, "g":   2, "b":   4 },{ "r": 116, "g": 114, "b": 116 },{ "r": 188, "g": 186, "b": 188 },{ "r": 252, "g": 250, "b": 252 }]}'>
+            gray
+          </option>
+          <option class="palette-name" value='{"colors": [{ "r": 252, "g": 250, "b": 252 },{ "r": 244, "g": 254, "b":   4 },{ "r":   4, "g": 162, "b": 164 },{ "r":   4, "g":   2, "b":   4 }]}'>
+            reverse
+          </option>
+        </select>
       </div>
     </main>
   </div>

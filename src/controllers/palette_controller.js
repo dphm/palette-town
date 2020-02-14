@@ -1,5 +1,5 @@
 import { Controller } from "stimulus"
-import Color from "../color";
+import Color from "../color"
 
 export default class extends Controller {
     static targets = [
@@ -18,16 +18,7 @@ export default class extends Controller {
     }
 
     connect() {
-        this.loadData()
-    }
-
-    loadData() {
-        fetch(this.data.get("url"))
-            .then((response) => response.text())
-            .then((paletteOptions) => {
-                this.selectorTarget.innerHTML = paletteOptions
-                this.update()
-            })
+        this.update()
     }
 
     update() {
