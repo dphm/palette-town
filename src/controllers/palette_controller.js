@@ -1,5 +1,5 @@
 import { Controller } from "stimulus"
-import PaletteData from "../palette-data"
+import Color from "../color";
 
 export default class extends Controller {
     static targets = [
@@ -9,7 +9,8 @@ export default class extends Controller {
     ]
 
     get colors() {
-        return this.paletteData.colors(this.selectorTarget.value)
+        return JSON.parse(this.selectorTarget.value).colors
+            .map((values) => new Color(values))
     }
 
     get rgbColors() {
@@ -23,10 +24,8 @@ export default class extends Controller {
     loadData() {
         fetch(this.data.get("url"))
             .then((response) => response.text())
-            .then((palettesJson) => {
-                const palettes = JSON.parse(palettesJson).palettes
-                this.paletteData = new PaletteData(palettes)
-                this.initializeOptions()
+            .then((paletteOptions) => {
+                this.selectorTarget.innerHTML = paletteOptions
                 this.update()
             })
     }
@@ -36,18 +35,5 @@ export default class extends Controller {
         this.canvasTarget.style = `background-color: ${this.rgbColors[2]};`
         this.selectorTarget.style = `color: ${this.rgbColors[0]};`
         this.selectorTarget.parentElement.style = `border-color: ${this.rgbColors[1]}; box-shadow: inset 0 2px ${this.rgbColors[2]}, 0 2px ${this.rgbColors[2]};`
-    }
-
-    initializeOptions() {
-        const options = this.paletteData.names.map((name) => {
-            var option = document.createElement("option")
-            option.className = "palette-name"
-            option.value = name
-            option.innerText = name
-            return option
-        })
-
-        const selector = this.selectorTarget
-        options.forEach((option) => selector.appendChild(option))
     }
 }
